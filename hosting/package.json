@@ -16,6 +16,11 @@
     "defaults"
   ],
   "dependencies": {
+    "@jspsych/plugin-html-button-response": "^1.1.3",
+    "@jspsych/plugin-html-slider-response": "^1.1.3",
+    "@jspsych/plugin-survey-html-form": "^1.0.3",
+    "@jspsych/plugin-survey-multi-choice": "^1.1.3",
+    "@jspsych/plugin-survey-text": "^1.1.3",
     "firebase": "^10.6.0",
     "jspsych": "^7.3.4"
   },

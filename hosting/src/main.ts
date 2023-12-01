@@ -1,7 +1,7 @@
 import { runExperiment } from './experiment'
 import { getExptInitialized, sandboxStatus, setExptInitialized } from './globals'
+// import './styles/main.css'
 import 'jspsych/css/jspsych.css'
-import './styles/main.css'
 
 const sandy = sandboxStatus()
 
