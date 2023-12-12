@@ -3,7 +3,7 @@ import { getUserInfo, sandboxStatus } from './globals'
 
 import { initJsPsych } from 'jspsych'
 import jsPsychHtmlKeyboardResponse from '@jspsych/plugin-html-keyboard-response'
-import jsPsychPreload from '@jspsych/plugin-preload'
+// import jsPsychPreload from '@jspsych/plugin-preload'
 import jsPsychHtmlButtonResponse from '@jspsych/plugin-html-button-response'
 import jsPsychHtmlSliderResponse from '@jspsych/plugin-html-slider-response'
 import jsPsychSurveyText from '@jspsych/plugin-survey-text'
@@ -40,6 +40,7 @@ export async function runExperiment() {
           },
         )
       }
+      
     },
     on_finish: async (data) => {
       await saveTrialDataComplete(data)
@@ -61,7 +62,10 @@ export async function runExperiment() {
 
   // determines participants receive the force or the possibility generation question first
   const forceFirst = (Math.round(Math.random())==0)
-  console.log("forceFirst:", forceFirst)
+
+  if(sandy){
+    console.log("forceFirst:", forceFirst)
+  }
 
   // define consent trial
   const consent = {
@@ -90,7 +94,8 @@ export async function runExperiment() {
           {prompt: '<p style="width:500px;">What is your education level (e.g., Grade/elementary school, High school, Some college or university, College or university degree, Graduate degree, Masters, PhD)?', required: requirements, name: "education"}
       ],
       data:{
-          trial_name: "participant_info"
+          trial_name: "participant_info",
+          saveToFirestore: true
       }
   };
   timeline.push(participant_info)
@@ -108,7 +113,8 @@ export async function runExperiment() {
           }
       ],
       data: {
-          trial_name: "commitment"
+          trial_name: "commitment",
+          saveToFirestore: true
       }
   }
   timeline.push(commitment);
@@ -173,7 +179,8 @@ export async function runExperiment() {
               context_order+=1
               return context_order
           },
-          force_first: forceFirst
+          force_first: forceFirst,
+          saveToFirestore: true
       }
   }
 
@@ -245,7 +252,8 @@ export async function runExperiment() {
           trial_name: 'force',
           context: jsPsych.timelineVariable('context'),
           action_numb: function(){return action_numb},
-          action: function(){return action_text}
+          action: function(){return action_text},
+          saveToFirestore: true
       }
   }
 
@@ -296,7 +304,8 @@ export async function runExperiment() {
           }},
       data: {
           trial_name: "option_gen_prompt",
-          context: jsPsych.timelineVariable('context')
+          context: jsPsych.timelineVariable('context'),
+          saveToFirestore: true
       }, 
       
   }
@@ -354,7 +363,9 @@ export async function runExperiment() {
 
           data: {
               trial_name: 'option_gen_answer',
-              context: jsPsych.timelineVariable('context')},
+              context: jsPsych.timelineVariable('context'),
+              saveToFirestore: true
+            },
 
           on_timeline_finish: function(){
               let lastAnswer = jsPsych.data.get().last(1).values()[0].response.answer
@@ -421,10 +432,11 @@ export async function runExperiment() {
           return text;
       },
       data: {
-          trial_name: 'response_ratings',
-          context: jsPsych.timelineVariable('context'),
-          action: function(){
-              return response_list[i]}   
+            trial_name: 'response_ratings',
+            context: jsPsych.timelineVariable('context'),
+            action: function(){
+                return response_list[i]},
+            saveToFirestore: true
       },
       // on_finish: function(data){
           // data.probability = jsPsych.data.getLastTrialData().trials[0].response['probable or improbable']
@@ -485,7 +497,8 @@ export async function runExperiment() {
               return action_text},
           action_numb: function(){
               return action_numb
-          }
+          },
+          saveToFirestore: true
       },
       // on_finish: function(data){
           // data.probability = jsPsych.data.getLastTrialData().trials[0].response['probable or improbable']

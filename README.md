@@ -1,18 +1,11 @@
-# Serverless jsPsych Template (jsPsych-Firebase-Firestore-Prolific-Vite)
+# Possibility Generation and Force Study jsPsych + Firestore implementation (jsPsych-Firebase-Firestore-Prolific-Vite)
 
-This is an of how to setup a development environment for running online psych experiments. Key aspects are:
-
-- Future-looking configuration that implements the major developments from [ESLint](https://eslint.org).
-- [Vite](https://vitejs.dev/) bundler for robust cross-platform support
-- [jsPsych](https://www.jspsych.org/) for UX flow
-- [Firebase](https://firebase.google.com/) hosting
-- [Serverless](https://www.serverless.com/) data handling with [Firestore](https://firebase.google.com/docs/firestore)
-- [Prolific](https://www.prolific.com/) integration
+This is a study designed using [Dae's](https://github.com/daeh/) [serverless jsPsych template](https://github.com/daeh/jspsych-template).
 
 ## Installation
 
 - Fork this repo: `Use this template` > `Create a new repository`
-- Git clone the forked repo (replace with your repo info): e.g. `git clone --branch main https://github.com/daeh/jspsych-template.git jspsych-template`
+- Git clone the forked repo (replace with your repo info): e.g. `git clone --branch main https://github.com/echecht/jspsych-template jspsych-template`
 - Enter the repo folder (replace with your repo info): e.g. `cd jspsych-template`
 
 ### Firebase configuration
@@ -187,10 +180,3 @@ When developing the experiment, you can set `const sandy = true` in [`globals.ts
 
 
 
-
-
-
-
-## Author
-
-[![Personal Website](https://img.shields.io/badge/personal%20website-daeh.info-orange?style=for-the-badge)](https://daeh.info) [![BlueSky](https://img.shields.io/badge/bsky-@dae.bsky.social-blue?style=for-the-badge)](https://bsky.app/profile/dae.bsky.social) [![Twitter](https://img.shields.io/badge/twitter-@DaeHoulihan-white?style=for-the-badge&logo=twitter)](https://twitter.com/DaeHoulihan)
